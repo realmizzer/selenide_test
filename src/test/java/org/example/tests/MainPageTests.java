@@ -34,7 +34,7 @@ public class MainPageTests extends BasePageTests {
         CatalogPage catalogPage = new CatalogPage();
 
         mainPage.headerElement.clickCatalogLink();
-        catalogPage.writeSearchInput("Frieren");
+        catalogPage.enterSearchInput("Frieren");
         catalogPage.searchInput.pressEnter();
 
         catalogPage.mainSection.$x(".//a[contains(@href, 'f0b40660-6627-4a59-8dcf-7ec8596b3623')]").shouldBe(Condition.visible);
