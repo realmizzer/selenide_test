@@ -28,7 +28,7 @@ public class MainPageTests extends BasePageTests {
     }
 
     @Test
-    @DisplayName("Navigation from Home Page to Catalog Page and find Frieren there with search input")
+    @DisplayName("Navigation from Main Page to Catalog Page and find Frieren there with search input")
     void shouldNavigateCatalogPageFromHomePageAndFindFrieren() {
         MainPage mainPage = new MainPage();
         CatalogPage catalogPage = new CatalogPage();
