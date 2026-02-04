@@ -5,9 +5,13 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.example.pages.AuthPage;
 import org.example.pages.ProfilePage;
+import org.example.testdata.UserTestData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 public class AuthPageTests extends BasePageTests {
 
@@ -16,7 +20,7 @@ public class AuthPageTests extends BasePageTests {
     }
 
     @ParameterizedTest
-    @MethodSource("org.example.testdata.UserTestData#getUserTestData")
+    @MethodSource("getUserTestData")
     @DisplayName("User authorizes and logouts from the system")
     @Severity(SeverityLevel.CRITICAL)
     void shouldAuthorizeAndLogout(String username, String password) {
@@ -32,6 +36,10 @@ public class AuthPageTests extends BasePageTests {
         profilePage.clickSettingsTab().clickSignOutButton();
 
         authPage.headerElement.profileLink.shouldBe(Condition.hidden);
+    }
+
+    static Stream<Arguments> getUserTestData() {
+        return UserTestData.getUserTestData();
     }
 
 }
